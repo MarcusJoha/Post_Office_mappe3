@@ -10,7 +10,18 @@ import java.nio.file.Files;
 
 public class Filehandler {
 
+    private ObservableList<PostOffice> postOffices;
+
     public Filehandler() {
+        postOffices = FXCollections.observableArrayList();
+    }
+
+    public ObservableList<PostOffice> getPostOffices() {
+        return postOffices;
+    }
+
+    public void addPostOffice(PostOffice postOffice){
+        postOffices.add(postOffice);
     }
 
     public void writeToCSV() throws IOException {
@@ -20,9 +31,8 @@ public class Filehandler {
     //Todo: må finne ut hvordan jeg henter de
     // riktige dataene jeg trenger.
 
-    public ObservableList<PostOffice> readFromFile() throws IOException{
-        ObservableList<PostOffice> list = FXCollections.observableArrayList();
-        File filePath = new File("src/main/resources/edu/idatt2001/marcusjohannessen/PostNum.txt");
+    public void readFromFile() throws IOException{
+        File filePath = new File("src/main/resources/edu/idatt2001/marcusjohannessen/storage/register.txt");
 
         BufferedReader br = Files.newBufferedReader(filePath.toPath());
         String input;
@@ -34,13 +44,12 @@ public class Filehandler {
                 String city = pieces[3];
 
                 PostOffice po = new PostOffice(zipCode, municipality, city);
-                list.add(po);
+                addPostOffice(po);
             }
         }finally {
             if(br != null){
                 br.close();
             }
         }
-        return list;
     }
 }
