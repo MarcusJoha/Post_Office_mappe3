@@ -1,38 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="951.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.idatt2001.marcusjohannessen.PrimaryController">
-   <left>
-      <VBox maxWidth="216.0" prefHeight="460.0" prefWidth="216.0" BorderPane.alignment="CENTER">
-         <children>
-            <TextField alignment="CENTER" maxWidth="200.0" prefHeight="25.0" prefWidth="174.0">
-               <VBox.margin>
-                  <Insets left="10.0" top="50.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </TextField>
-            <TextField alignment="CENTER" maxWidth="200.0" prefHeight="25.0" prefWidth="199.0">
-               <VBox.margin>
-                  <Insets left="10.0" top="50.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </TextField>
-         </children>
-      </VBox>
-   </left>
    <center>
       <TableView prefHeight="561.0" prefWidth="735.0" BorderPane.alignment="CENTER">
         <columns>
@@ -48,12 +25,23 @@
    <top>
       <AnchorPane prefHeight="67.0" prefWidth="951.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="404.0" layoutY="20.0" text="Post Offices" textAlignment="CENTER">
+            <Label layoutX="420.0" layoutY="14.0" text="Post Offices" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="22.0" />
                </font>
             </Label>
+            <Button layoutX="14.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
          </children>
       </AnchorPane>
    </top>
+   <left>
+      <AnchorPane prefHeight="576.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="zipCodeInput" layoutX="14.0" layoutY="100.0" prefHeight="35.0" prefWidth="131.0" />
+            <TextField fx:id="municipalityInput" layoutX="14.0" layoutY="222.0" prefHeight="35.0" prefWidth="136.0" />
+            <Button fx:id="zipCodeSearch" layoutX="146.0" layoutY="105.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Zipcode S" />
+            <Button fx:id="municipalitySearch" layoutX="154.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Mun S" />
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>

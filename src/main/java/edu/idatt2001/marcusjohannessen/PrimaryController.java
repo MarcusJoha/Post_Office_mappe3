@@ -3,6 +3,7 @@ package edu.idatt2001.marcusjohannessen;
 import edu.idatt2001.marcusjohannessen.office.PostOffice;
 import edu.idatt2001.marcusjohannessen.office.PostOfficeRegister;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -30,6 +31,12 @@ public class PrimaryController {
     private TextField zipCodeInput;
     @FXML
     private TextField municipalityInput;
+    @FXML
+    private Button zipCodeSearch;
+    @FXML
+    private Button municipalitySearch;
+
+
 
     PostOfficeRegister postOfficeRegister = new PostOfficeRegister();
 
