@@ -1,7 +1,6 @@
 package edu.idatt2001.marcusjohannessen;
 
-import edu.idatt2001.marcusjohannessen.office.PostOffice;
-import edu.idatt2001.marcusjohannessen.office.PostOfficeRegister;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -20,11 +19,11 @@ public class PrimaryController {
     @FXML
     private TableView<PostOffice> tableView;
     @FXML
-    private TableColumn<String, PostOffice> zipCodeCol;
+    private TableColumn<PostOffice, String> codeCol;
     @FXML
-    private TableColumn<String, PostOffice> municipalityCol;
+    private TableColumn<PostOffice, String> municipalityCol;
     @FXML
-    private TableColumn<String, PostOffice> cityCol;
+    private TableColumn<PostOffice, String> cityCol;
     @FXML
     private VBox leftVbox;
     @FXML
@@ -38,7 +37,8 @@ public class PrimaryController {
 
 
 
-    PostOfficeRegister postOfficeRegister = new PostOfficeRegister();
+    //PostOfficeRegister postOfficeRegister = new PostOfficeRegister();
+    Filehandler filehandler = new Filehandler();
 
     /**
      * Initializes when the application is started.
@@ -46,21 +46,27 @@ public class PrimaryController {
 
     public void initialize(){
         setCellProperty();
+        codeCol.setCellValueFactory(new PropertyValueFactory<>("zipCode"));
+
+        //fillTableviewContent();
     }
 
-    private void setCellProperty(){
-        zipCodeCol.setCellValueFactory(new PropertyValueFactory<>("zip code"));
+    private void setCellProperty() {
+        codeCol.setCellValueFactory(new PropertyValueFactory<>("zipCode"));
         municipalityCol.setCellValueFactory(new PropertyValueFactory<>("municipality"));
         cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
     }
-
-
 
     //TODO: skriver fra fil i Filehandler.
     //TODO: legger til i listen i PostOfficeRegister.
     //TODO:
     public void fillTableviewContent(){
-
+        try{
+            ObservableList<PostOffice> list = filehandler.readFromFile();
+            tableView.setItems(list);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

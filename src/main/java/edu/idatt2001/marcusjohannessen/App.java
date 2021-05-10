@@ -35,4 +35,13 @@ public class App extends Application {
         launch(args);
     }
 
+    @Override
+    public void init() throws Exception {
+        super.init();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+    }
 }

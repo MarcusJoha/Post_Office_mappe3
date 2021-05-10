@@ -1,4 +1,4 @@
-package edu.idatt2001.marcusjohannessen.office;
+package edu.idatt2001.marcusjohannessen;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,5 +13,9 @@ public class PostOfficeRegister {
 
     public ObservableList<PostOffice> getPostOfficeRegister() {
         return postOfficeRegister;
+    }
+
+    public void setContentInList(ObservableList<PostOffice> list){
+        postOfficeRegister.addAll(list);
     }
 }
