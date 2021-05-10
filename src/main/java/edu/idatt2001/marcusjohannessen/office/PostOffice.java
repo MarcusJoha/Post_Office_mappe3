@@ -6,7 +6,11 @@ public class PostOffice {
     private String municipalityNumber;
 
 
-    public PostOffice(String city, String municipality, String municipalityNumber) {
+    public PostOffice (String municipalityNumber, String municipality){
+        this(municipalityNumber, municipality, null);
+    }
+
+    public PostOffice(String municipalityNumber, String municipality, String city) {
         this.city = city;
         this.municipality = municipality;
         this.municipalityNumber = municipalityNumber;

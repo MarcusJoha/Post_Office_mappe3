@@ -55,4 +55,26 @@ public class PrimaryController {
     }
 
 
+
+    //TODO: skriver fra fil i Filehandler.
+    //TODO: legger til i listen i PostOfficeRegister.
+    //TODO:
+    public void fillTableviewContent(){
+
+    }
+
+
+    //TODO: tableview oppdaterer seg mens brukeren skriver
+    //Når man trykker enter søker man
+    public void searchByZipCode(){
+
+    }
+
+
+    //TODO: tableview oppdaterer seg mens brukeren skriver
+    //Når man trykker enter søker man
+    public void searchByMunicipiality(){
+
+    }
+
 }
