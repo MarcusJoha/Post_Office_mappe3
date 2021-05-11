@@ -4,6 +4,7 @@ package edu.idatt2001.marcusjohannessen;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -85,17 +86,5 @@ public class PrimaryController implements Initializable {
         amountField.setText("Amount: " + String.valueOf(tableView.getItems().size()));
     }
 
-    //TODO: tableview oppdaterer seg mens brukeren skriver
-    //Når man trykker enter søker man
-    public void filterByZipCode(){
-
-    }
-
-
-    //TODO: tableview oppdaterer seg mens brukeren skriver
-    //Når man trykker enter søker man
-    public void filterByMunicipality(){
-
-    }
 
 }
