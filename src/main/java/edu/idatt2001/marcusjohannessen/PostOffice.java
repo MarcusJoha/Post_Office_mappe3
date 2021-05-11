@@ -36,7 +36,6 @@ public class PostOffice {
         this.zipCode = zipCode;
     }
 
-
     @Override
     public String toString() {
         return zipCode +

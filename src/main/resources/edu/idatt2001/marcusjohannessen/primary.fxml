@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -34,7 +35,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #123456;">
                <children>
-                  <Label layoutX="14.0" layoutY="21.0" text="Post Offices" textFill="WHITE">
+                  <Label layoutX="14.0" prefHeight="61.0" prefWidth="217.0" text="Post Offices" textFill="WHITE">
                      <font>
                         <Font name="Andale Mono" size="24.0" />
                      </font>
@@ -72,6 +73,21 @@
                         <Image url="@pictures/1200px-Magnifying_glass_icon.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="amountField" text="Amount: ">
+                     <padding>
+                        <Insets left="250.0" />
+                     </padding>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <Button fx:id="refreshAmount" mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh">
+                           <font>
+                              <Font name="System Italic" size="17.0" />
+                           </font>
+                        </Button>
+                     </graphic>
+                  </Label>
               </items>
             </ToolBar>
          </children>
