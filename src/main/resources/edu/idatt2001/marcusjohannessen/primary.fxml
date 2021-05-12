@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="951.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.idatt2001.marcusjohannessen.PrimaryController">
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="951.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.idatt2001.marcusjohannessen.PrimaryController">
    <center>
       <TableView fx:id="tableView" prefHeight="555.0" prefWidth="951.0" BorderPane.alignment="CENTER">
         <columns>
@@ -48,7 +48,7 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Save" />
+                          <MenuItem onAction="#handleSave" mnemonicParsing="false" text="Save" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Edit">

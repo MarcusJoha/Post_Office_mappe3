@@ -11,7 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +22,8 @@ import java.util.ResourceBundle;
 
 public class PrimaryController implements Initializable {
 
+    @FXML
+    private BorderPane mainBorderPane;
     @FXML
     private TableView<PostOffice> tableView;
     @FXML
@@ -86,5 +90,22 @@ public class PrimaryController implements Initializable {
         amountField.setText("Amount: " + String.valueOf(tableView.getItems().size()));
     }
 
-
+    @FXML
+    public void handleSave(){
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Save File");
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CSV", ".csv"),
+                new FileChooser.ExtensionFilter("TXT", ".txt")
+        );
+        //Opens where the main window is
+        //User can not interact with Application before
+        //file chooser window is closed
+        File file = fc.showSaveDialog(mainBorderPane.getScene().getWindow());
+        try {
+            filehandler.saveToFile(file);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

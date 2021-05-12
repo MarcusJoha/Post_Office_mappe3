@@ -2,9 +2,11 @@ package edu.idatt2001.marcusjohannessen;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 
@@ -50,6 +52,21 @@ public class Filehandler {
             if(br != null){
                 br.close();
             }
+        }
+    }
+
+    public void saveToFile(File file) throws IOException{
+        try (FileWriter fr = new FileWriter(file)){
+            for (PostOffice p: postOffices){
+                fr.append(p.getZipCode());
+                fr.append(",");
+                fr.append(p.getMunicipality());
+                fr.append(",");
+                fr.append(p.getCity());
+                fr.append("\n");
+            }
+        }catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
