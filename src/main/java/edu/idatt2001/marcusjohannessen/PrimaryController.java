@@ -1,5 +1,6 @@
 package edu.idatt2001.marcusjohannessen;
 
+import edu.idatt2001.marcusjohannessen.data.Filehandler;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
