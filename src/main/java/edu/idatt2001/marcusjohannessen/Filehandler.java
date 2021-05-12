@@ -2,7 +2,6 @@ package edu.idatt2001.marcusjohannessen;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,13 +29,20 @@ public class Filehandler {
 
     }
 
-    //Todo: må finne ut hvordan jeg henter de
-    // riktige dataene jeg trenger.
+    /**
+     *
+     * @param filePath
+     * @throws IOException
+     */
 
-    public void readFromFile() throws IOException{
-        File filePath = new File("src/main/resources/edu/idatt2001/marcusjohannessen/storage/register.txt");
-
-        BufferedReader br = Files.newBufferedReader(filePath.toPath());
+    public void readFromFile(File filePath) throws IOException{
+        BufferedReader br = null;
+        try{
+            br = Files.newBufferedReader(filePath.toPath());
+        }catch (NullPointerException npe){
+            npe.printStackTrace();
+            System.out.println("No file was choosen");
+        }
         String input;
         try {
             while ((input = br.readLine()) != null){
@@ -45,7 +51,7 @@ public class Filehandler {
                 String municipality = pieces[1];
                 String city = pieces[3];
 
-                PostOffice po = new PostOffice(zipCode, municipality, city);
+                PostOffice po = new NorwegianPostOffice(zipCode, municipality, city);
                 addPostOffice(po);
             }
         }finally {
@@ -54,6 +60,12 @@ public class Filehandler {
             }
         }
     }
+
+    /**
+     *
+     * @param file
+     * @throws IOException
+     */
 
     public void saveToFile(File file) throws IOException{
         try (FileWriter fr = new FileWriter(file)){

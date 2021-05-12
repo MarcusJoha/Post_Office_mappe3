@@ -1,6 +1,6 @@
 package edu.idatt2001.marcusjohannessen;
 
-public class PostOffice {
+public abstract class PostOffice {
     private String zipCode;
     private String municipality;
     private String city;

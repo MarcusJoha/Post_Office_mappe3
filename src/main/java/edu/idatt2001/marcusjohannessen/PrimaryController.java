@@ -1,20 +1,14 @@
 package edu.idatt2001.marcusjohannessen;
 
-
-import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-
 import java.io.File;
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,6 +32,8 @@ public class PrimaryController implements Initializable {
     private Label amountField;
     @FXML
     private Button refreshAmount;
+    @FXML
+    private Menu about;
 
 
     //PostOfficeRegister postOfficeRegister = new PostOfficeRegister();
@@ -49,9 +45,10 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        File filePath = new File("src/main/resources/edu/idatt2001/marcusjohannessen/storage/register.txt");
         setCellProperty();
         try {
-            filehandler.readFromFile();
+            filehandler.readFromFile(filePath);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -107,5 +104,30 @@ public class PrimaryController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void handleLoadFromFile(){
+        FileChooser fc = new FileChooser();
+        fc.setTitle("Load from file");
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("CSV", ".csv"),
+                new FileChooser.ExtensionFilter("TXT", ".txt")
+        );
+        File file = fc.showOpenDialog(mainBorderPane.getScene().getWindow());
+
+        try{
+            filehandler.readFromFile(file);
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleInformationButton(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setContentText("Litt informasjon, fikser senere");
+        alert.show();
     }
 }
