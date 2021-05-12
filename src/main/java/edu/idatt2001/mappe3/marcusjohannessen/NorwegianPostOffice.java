@@ -1,4 +1,4 @@
-package edu.idatt2001.marcusjohannessen;
+package edu.idatt2001.mappe3.marcusjohannessen;
 
 /**
  * Norwegian Post Office

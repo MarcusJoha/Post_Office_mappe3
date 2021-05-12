@@ -1,4 +1,4 @@
-package edu.idatt2001.marcusjohannessen;
+package edu.idatt2001.mappe3.marcusjohannessen;
 
 public abstract class PostOffice {
     private String zipCode;

@@ -1,7 +1,7 @@
-package edu.idatt2001.marcusjohannessen.data;
+package edu.idatt2001.mappe3.marcusjohannessen.data;
 
-import edu.idatt2001.marcusjohannessen.NorwegianPostOffice;
-import edu.idatt2001.marcusjohannessen.PostOffice;
+import edu.idatt2001.mappe3.marcusjohannessen.NorwegianPostOffice;
+import edu.idatt2001.mappe3.marcusjohannessen.PostOffice;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

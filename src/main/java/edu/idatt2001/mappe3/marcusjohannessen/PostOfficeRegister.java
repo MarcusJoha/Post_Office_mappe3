@@ -1,4 +1,4 @@
-package edu.idatt2001.marcusjohannessen;
+package edu.idatt2001.mappe3.marcusjohannessen;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
