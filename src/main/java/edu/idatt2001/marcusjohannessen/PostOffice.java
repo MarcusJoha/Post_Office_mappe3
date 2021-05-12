@@ -29,7 +29,7 @@ public abstract class PostOffice {
     }
 
     public String getZipCode() {
-        return zipCode;
+        return this.zipCode;
     }
 
     public void setMunicipalityNumber(String zipCode) {

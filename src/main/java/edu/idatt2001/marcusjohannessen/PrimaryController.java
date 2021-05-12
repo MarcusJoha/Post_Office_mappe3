@@ -30,11 +30,6 @@ public class PrimaryController implements Initializable {
     private TextField filterfield;
     @FXML
     private Label amountField;
-    @FXML
-    private Button refreshAmount;
-    @FXML
-    private Menu about;
-
 
     //PostOfficeRegister postOfficeRegister = new PostOfficeRegister();
     Filehandler filehandler = new Filehandler();
@@ -45,6 +40,7 @@ public class PrimaryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        //Fills tableview with data from norwegian post offices when initializing application
         File filePath = new File("src/main/resources/edu/idatt2001/marcusjohannessen/storage/register.txt");
         setCellProperty();
         try {
@@ -53,8 +49,6 @@ public class PrimaryController implements Initializable {
             e.printStackTrace();
         }
         filterList();
-
-
     }
 
     private void filterList(){
@@ -110,6 +104,7 @@ public class PrimaryController implements Initializable {
     public void handleLoadFromFile(){
         FileChooser fc = new FileChooser();
         fc.setTitle("Load from file");
+
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("CSV", ".csv"),
                 new FileChooser.ExtensionFilter("TXT", ".txt")

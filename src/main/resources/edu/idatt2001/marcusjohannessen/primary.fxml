@@ -52,7 +52,7 @@
                             <MenuItem mnemonicParsing="false" onAction="#handleLoadFromFile" text="Load from file" />
                         </items>
                       </Menu>
-                      <Menu fx:id="about" mnemonicParsing="false" text="About">
+                      <Menu mnemonicParsing="false" text="About">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#handleInformationButton" text="Information" />
                            </items></Menu>
@@ -76,7 +76,7 @@
                         <Font size="20.0" />
                      </font>
                      <graphic>
-                        <Button fx:id="refreshAmount" mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh">
+                        <Button mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh">
                            <font>
                               <Font name="System Italic" size="17.0" />
                            </font>

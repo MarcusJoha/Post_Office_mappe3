@@ -25,16 +25,15 @@ public class Filehandler {
         postOffices.add(postOffice);
     }
 
-    public void writeToCSV() throws IOException {
-
-    }
-
     /**
      *
      * @param filePath
      * @throws IOException
+     * Reads from a chosen file
+     * with post offices
+     * that contains zipcode,
+     * municipality and city
      */
-
     public void readFromFile(File filePath) throws IOException{
         BufferedReader br = null;
         try{
@@ -54,7 +53,9 @@ public class Filehandler {
                 PostOffice po = new NorwegianPostOffice(zipCode, municipality, city);
                 addPostOffice(po);
             }
-        }finally {
+        }catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+        } finally {
             if(br != null){
                 br.close();
             }
@@ -65,8 +66,8 @@ public class Filehandler {
      *
      * @param file
      * @throws IOException
+     * Saves postofices in Application to a file
      */
-
     public void saveToFile(File file) throws IOException{
         try (FileWriter fr = new FileWriter(file)){
             for (PostOffice p: postOffices){
