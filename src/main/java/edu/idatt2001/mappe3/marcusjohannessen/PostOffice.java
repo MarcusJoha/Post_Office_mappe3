@@ -32,7 +32,7 @@ public abstract class PostOffice {
         return this.zipCode;
     }
 
-    public void setMunicipalityNumber(String zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 

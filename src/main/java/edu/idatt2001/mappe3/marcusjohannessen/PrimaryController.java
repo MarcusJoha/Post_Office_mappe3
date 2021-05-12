@@ -42,7 +42,7 @@ public class PrimaryController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
         //Fills tableview with data from norwegian post offices when initializing application
-        File filePath = new File("src/main/resources/edu/idatt2001/marcusjohannessen/storage/register.txt");
+        File filePath = new File("src/main/resources/edu/idatt2001/mappe3/marcusjohannessen/storage/register.txt");
         setCellProperty();
         try {
             filehandler.readFromFile(filePath);
