@@ -35,7 +35,7 @@ class FilehandlerTest {
 
 
     @Test
-    void getPostOffices() {
+    void expected_postoffice_from_get_method() {
         Assertions.assertEquals(postOffice1, filehandler.getPostOffices().get(0));
         Assertions.assertEquals(postOffice2, filehandler.getPostOffices().get(1));
         Assertions.assertEquals(postOffice3, filehandler.getPostOffices().get(2));
@@ -49,7 +49,7 @@ class FilehandlerTest {
     }
 
     @Test
-    void readFromFile() {
+    void fail_exception_thrown_reading_from_file() {
         try{
             //Adds it to Observable list in filehandler
             filehandler.readFromFile(file);
@@ -61,7 +61,7 @@ class FilehandlerTest {
     }
 
     @Test
-    void saveToFile() {
+    void fail_if_exception_thrown_saving_to_file() {
         try{
             File file = new File("src/test/resources/edu.idatt2001.mappe3.marcusjohannessen/Test_Storage1.txt");
             filehandler.saveToFile(file);
