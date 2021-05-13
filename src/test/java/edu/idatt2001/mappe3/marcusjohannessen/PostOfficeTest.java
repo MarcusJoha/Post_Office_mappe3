@@ -14,29 +14,29 @@ class PostOfficeTest {
     }
 
     @Test
-    void setCity() {
+    void set_method_for_city_equals_expected() {
         postOffice.setCity("city");
         Assertions.assertEquals("city", postOffice.getCity());
     }
 
     @Test
-    void getMunicipality() {
+    void return_expected_municipality() {
         Assertions.assertEquals("Mun", postOffice.getMunicipality());
     }
 
     @Test
-    void setMunicipality() {
+    void sets_expected_municipality() {
         postOffice.setMunicipality("Mun1");
         Assertions.assertEquals("Mun1", postOffice.getMunicipality());
     }
 
     @Test
-    void getZipCode() {
+    void returns_expected_zip_code() {
         Assertions.assertEquals("1234", postOffice.getZipCode());
     }
 
     @Test
-    void setZipCode() {
+    void sets_expected_zip_code() {
         PostOffice post = new NorwegianPostOffice("4231", "test", "test");
         post.setZipCode("4321");
         Assertions.assertEquals("4321", post.getZipCode());
