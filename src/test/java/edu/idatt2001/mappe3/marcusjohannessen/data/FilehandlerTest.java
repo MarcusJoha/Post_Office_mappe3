@@ -42,7 +42,7 @@ class FilehandlerTest {
     }
 
     @org.junit.jupiter.api.Test
-    void addPostOffice() {
+    void assert_that_post_office_is_added() {
        PostOffice postOffice4 = new NorwegianPostOffice("1234", "Test4","Test4");
        filehandler.addPostOffice(postOffice4);
        Assertions.assertTrue(filehandler.getPostOffices().contains(postOffice4));

@@ -9,7 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,30 +43,29 @@ public class PrimaryController implements Initializable {
      */
 
     @Override
-    public void initialize(URL location, ResourceBundle resources){
+    public void initialize(URL location, ResourceBundle resources) {
         //Fills tableview with data from norwegian post offices when initializing application
         File filePath = new File("src/main/resources/edu/idatt2001/mappe3/marcusjohannessen/storage/register.txt");
         setCellProperty();
         try {
             filehandler.readFromFile(filePath);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         filterList();
     }
 
-    private void filterList(){
-        FilteredList<PostOffice> filteredList = new FilteredList<>(filehandler.getPostOffices(), f -> true );
+    private void filterList() {
+        FilteredList<PostOffice> filteredList = new FilteredList<>(filehandler.getPostOffices(), f -> true);
         filterfield.textProperty().addListener((observableValue, oldVal, newVal) -> {
             filteredList.setPredicate(PostOffice -> {
                 if (newVal == null || newVal.isEmpty()) {
                     return true;
                 }
                 String lowerCaseFilter = newVal.toLowerCase();
-                if (PostOffice.getZipCode().toLowerCase().contains(lowerCaseFilter)){
+                if (PostOffice.getZipCode().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                }
-                else return PostOffice.getMunicipality().toLowerCase().contains(lowerCaseFilter);
+                } else return PostOffice.getMunicipality().toLowerCase().contains(lowerCaseFilter);
             });
         });
         SortedList<PostOffice> sortedList = new SortedList<>(filteredList);
@@ -78,49 +80,65 @@ public class PrimaryController implements Initializable {
         cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
     }
 
-    public void handleRefreshButton(){
+    public void handleRefreshButton() {
         amountField.setText("Amount: " + String.valueOf(tableView.getItems().size()));
     }
 
     @FXML
-    public void handleSave(){
+    public void handleSave() {
         FileChooser fc = new FileChooser();
         fc.setTitle("Save File");
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("CSV", ".csv"),
-                new FileChooser.ExtensionFilter("TXT", ".txt")
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("CSV", "*.csv")
         );
         //Opens where the main window is
         //User can not interact with Application before
         //file chooser window is closed
         File file = fc.showSaveDialog(mainBorderPane.getScene().getWindow());
-        try {
-            filehandler.saveToFile(file);
-        }catch (IOException e){
-            e.printStackTrace();
+        if (file != null){
+            try {
+                filehandler.saveToFile(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+            try{
+                throw new FileNotFoundException("No file was chosen");
+            }catch (FileNotFoundException fnfe){
+                fnfe.printStackTrace();
+            }
         }
     }
 
     @FXML
-    public void handleLoadFromFile(){
+    public void handleLoadFromFile() {
         FileChooser fc = new FileChooser();
         fc.setTitle("Load from file");
 
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("CSV", ".csv"),
-                new FileChooser.ExtensionFilter("TXT", ".txt")
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("CSV", "*.csv")
         );
         File file = fc.showOpenDialog(mainBorderPane.getScene().getWindow());
-
-        try{
-            filehandler.readFromFile(file);
-        } catch (IOException ioe){
-            ioe.printStackTrace();
+        if (file != null) {
+            try {
+                filehandler.readFromFile(file);
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        } else {
+            try {
+                throw new FileNotFoundException("No File was chosen");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 
     @FXML
-    public void handleInformationButton(){
+    public void handleInformationButton() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setContentText("Litt informasjon, fikser senere");

@@ -9,7 +9,6 @@ package edu.idatt2001.mappe3.marcusjohannessen;
  * Also you have to possibility of implementing a list in the application
  * that allows you to switch between different postoffices
  */
-
 public class NorwegianPostOffice extends PostOffice {
 
     public NorwegianPostOffice(String zipCode, String municipality, String city) {
