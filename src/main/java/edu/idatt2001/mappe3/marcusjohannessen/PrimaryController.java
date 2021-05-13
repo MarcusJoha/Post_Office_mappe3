@@ -9,10 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,6 +53,10 @@ public class PrimaryController implements Initializable {
         filterList();
     }
 
+    /**
+     * Puts post offices in tableview that contains key word
+     * from zip code or municipality.
+     */
     private void filterList() {
         FilteredList<PostOffice> filteredList = new FilteredList<>(filehandler.getPostOffices(), f -> true);
         filterfield.textProperty().addListener((observableValue, oldVal, newVal) -> {
@@ -74,16 +76,26 @@ public class PrimaryController implements Initializable {
         amountField.setText("Amount: " + sortedList.size());
     }
 
+    /**
+     * associate tablecolumns in tableview to PostOffice object variables
+     */
     private void setCellProperty() {
         codeCol.setCellValueFactory(new PropertyValueFactory<>("zipCode"));
         municipalityCol.setCellValueFactory(new PropertyValueFactory<>("municipality"));
         cityCol.setCellValueFactory(new PropertyValueFactory<>("city"));
     }
 
+    /**
+     * shows amount of post offices in tableview when pressed
+     */
     public void handleRefreshButton() {
         amountField.setText("Amount: " + String.valueOf(tableView.getItems().size()));
     }
 
+    /**
+     * Let user save content in tableview to a file on computer
+     * as a .txt or .csv
+     */
     @FXML
     public void handleSave() {
         FileChooser fc = new FileChooser();
@@ -111,6 +123,9 @@ public class PrimaryController implements Initializable {
         }
     }
 
+    /**
+     * Lets user load from a .txt or .csv file on computer
+     */
     @FXML
     public void handleLoadFromFile() {
         FileChooser fc = new FileChooser();
@@ -137,11 +152,17 @@ public class PrimaryController implements Initializable {
 
     }
 
+    /**
+     * shows pop up box containing information of application and version
+     */
     @FXML
     public void handleInformationButton() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
-        alert.setContentText("Litt informasjon, fikser senere");
+        alert.setHeaderText("This is an application that handles Post Offices\n" +
+                            "The register provides information about: zipcode, " +
+                            "\nmunicipiality and city for places in Norway");
+        alert.setContentText("Version: 1.0");
         alert.show();
     }
 }

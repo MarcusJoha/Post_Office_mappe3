@@ -1,5 +1,9 @@
 package edu.idatt2001.mappe3.marcusjohannessen;
 
+/**
+ * Class that represent a post office
+ */
+
 public abstract class PostOffice {
     private String zipCode;
     private String municipality;

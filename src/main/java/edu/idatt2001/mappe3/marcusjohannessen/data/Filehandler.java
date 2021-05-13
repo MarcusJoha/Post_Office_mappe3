@@ -4,12 +4,17 @@ import edu.idatt2001.mappe3.marcusjohannessen.NorwegianPostOffice;
 import edu.idatt2001.mappe3.marcusjohannessen.PostOffice;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+
+
+/**
+ * Class that administrate saving
+ * and loading from files
+ */
 
 public class Filehandler {
 
@@ -19,10 +24,19 @@ public class Filehandler {
         postOffices = FXCollections.observableArrayList();
     }
 
+    /**
+     *
+     * @return list of post offices
+     */
     public ObservableList<PostOffice> getPostOffices() {
         return postOffices;
     }
 
+    /**
+     *
+     * @param postOffice
+     * adds a post office to ObservableList in Filehandler
+     */
     public void addPostOffice(PostOffice postOffice){
         postOffices.add(postOffice);
     }
