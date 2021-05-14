@@ -5,6 +5,7 @@ import edu.idatt2001.mappe3.marcusjohannessen.PostOffice;
 import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
@@ -35,13 +36,15 @@ class FilehandlerTest {
 
 
     @Test
+    @DisplayName("Test for getPostOffices() method")
     void expected_postoffice_from_get_method() {
         Assertions.assertEquals(postOffice1, filehandler.getPostOffices().get(0));
         Assertions.assertEquals(postOffice2, filehandler.getPostOffices().get(1));
         Assertions.assertEquals(postOffice3, filehandler.getPostOffices().get(2));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
+    @DisplayName("Test for addPostOffice() method")
     void assert_that_post_office_is_added() {
        PostOffice postOffice4 = new NorwegianPostOffice("1234", "Test4","Test4");
        filehandler.addPostOffice(postOffice4);
@@ -49,6 +52,7 @@ class FilehandlerTest {
     }
 
     @Test
+    @DisplayName("Test for readFromFile() method")
     void fail_exception_thrown_reading_from_file() {
         try{
             //Adds it to Observable list in filehandler
@@ -61,6 +65,7 @@ class FilehandlerTest {
     }
 
     @Test
+    @DisplayName("Test for saveToFile() method")
     void fail_if_exception_thrown_saving_to_file() {
         try{
             File file = new File("src/test/resources/edu.idatt2001.mappe3.marcusjohannessen/Test_Storage1.txt");
