@@ -13,7 +13,7 @@ import java.nio.file.Files;
 
 /**
  * Class that administrate saving
- * and loading from files
+ * and loading from files.
  */
 
 public class Filehandler {
